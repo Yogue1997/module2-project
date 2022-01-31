@@ -6,7 +6,7 @@ function About () {
 
     return(
         <div>
-            <p>uuuuu</p>
+            <h6 id="test">kk</h6>
         </div>
     )
 }

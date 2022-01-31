@@ -1,5 +1,6 @@
-import React, { useState} from "react";
-
+import React, { useState, useEffect } from "react";
+import "react-loader-spinner"
+import axios from "axios";
 
 
 
@@ -7,12 +8,24 @@ import React, { useState} from "react";
 
 function Standings(props) {
 
-    const [active, setActive] = useState(true)
 
-    const [selectedLeague, setSelectedLeague] = useState(props.league)
-    const [selectedYear, setSelectedYear] = useState(props.year)
 
-    const data = props.standing
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [selectedLeague, setSelectedLeague] = useState("eng.1")
+    const [selectedYear, setSelectedYear] = useState("2021")
+
+
+    useEffect(() => {
+        setLoading(true)
+        axios(`https://api-football-standings.azharimm.site/leagues/${selectedLeague}/standings?season=${selectedYear}`)
+            .then(response => {
+                console.log(response.data.data.standings);
+                setData(response.data.data.standings);
+            })
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
+    }, [selectedYear, selectedLeague])
 
 
 
@@ -25,7 +38,7 @@ function Standings(props) {
                     defaultValue={selectedLeague}
                     onChange={(e) => setSelectedLeague(e.target.value)}
                 >
-                    <option value="ang.1">Argentine Liga Profesiol de Fútbol</option>
+                    <option value="arg.1">Argentine Liga Profesiol de Fútbol</option>
                     <option value="aus.1">Australian A-League</option>
                     <option value="bra.1">Brazilian Serie-A</option>
                     <option value="chn.1">Chinese Super League</option>
@@ -33,17 +46,14 @@ function Standings(props) {
                     <option value="eng.1">English Premier League</option>
                     <option value="fra.1">French Ligue</option>
                     <option value="ger.1">German Bundesliga</option>
-                    <option value="idn.1">Indonesia Liga 1</option>
+                    <option value="ind.1">Indonesia Liga 1</option>
                     <option value="ita.1">Italian Serie A</option>
                     <option value="jpn.1">Japanese J league</option>
-                    <option value="mys.1">Malysian Super League</option>
                     <option value="mex.1">Mexican Liga BBVA MX</option>
                     <option value="por.1">Portuguese Liga</option>
                     <option value="rus.1">Russian Primera League</option>
-                    <option value="sgp">Singaporean Premier League</option>
                     <option value="esp.1">Spanish Primera League</option>
-                    <option value="tha.1">Thai Premier League</option>
-                    <option value="uga.1">Ugandan Super League</option>
+                    <option value="tur.1">Turkish Super league</option>
                 </select>
                 <select
                     name="select-year"
@@ -65,20 +75,41 @@ function Standings(props) {
                 </select>
             </div>
             <div className="stadingRes">
-                { data.map((data, index) => {
-                    <div key={index} className="standingDiv">
+                {data.map((data, index) => (
+                    <div key={data.team.id} className="standingsInfDiv">
                         <h1>
                             <span>
-                                {`${index + 1}.`}
-                                <img src={data.team.logos[0].href} alt="#" />
+                                {`${index + 1}.`}<img src={data.team.logos[0].href} alt="#" 
+                                style={{width: "30px"}} />
                             </span>
                             {data.team.shortDisplayName}
                         </h1>
                     </div>
-                })}
+                ))}
             </div>
         </div>
     )
 }
 
 export default Standings;
+
+
+
+
+
+
+
+
+
+
+// { data.map((data, index) => {
+//     <div key={index} className="standingDiv">
+//         <h1>
+//             <span>
+//                 {`${index + 1}.`}
+//                 <img src={data.team.logos[0].href} alt="#" />
+//             </span>
+//             {data.team.shortDisplayName}
+//         </h1>
+//     </div>
+// })}

@@ -110,3 +110,17 @@ select {
     font-size: 19px;
 }
 
+#play{
+    color: rgb(23, 106, 179);
+}
+
+
+.stadingRes{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 22px 0px;
+}
+
+

@@ -1,13 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Leagues from './Leagues'
-import Standings from './Standings'
 import Players from './Players';
-
-
-
-
-
+import Standings from './Standings';
 
 function Home() {
 
@@ -15,29 +10,51 @@ function Home() {
     const [dataLeagues, setDataLeagues] = useState([]);
     const [dataPlayers, setDataPlayers] = useState([])
     const [standings, setStandings] = useState([])
-    const defaultLeague = 'eng.1'
-    const defaultYear = '2012'
+    const defaultLeagues = 'eng.1'
+    const defaultYears = '2012'
 
-    //img
-    let yo = standings.map((data) => {
-        return data.team.logos[0].href
-    })
-    console.log(yo);
+    // console.log(dataPlayers);
 
 
+    const [usr, setUsr] = useState('messi')
+
+    // useEffect(() => {
+    //     const userData = localStorage.getItem('usr-list')
+    //     if(userData) {
+    //         setUsr(JSON.parse(userData))
+    //     }
+    // }, [])
+
+
+    // useEffect( () => { 
+    //     localStorage.setItem('usr-list', JSON.stringify(usr))
+    // })
 
 
 
 
+    // const handleSubmit = () => {
+    //     const value = dataPlayers
+    //     // window.location.reload(true);
+    //     console.log('value on Submit: ', value);
+        
+    // }
 
 
 
+    // const getValue = (event) => {
+        
+    //     setUsr(event.target.value)
+    //         console.log(event.target.value)
+    // }
+
+    // console.log(usr);
 
 
     const fectchData = () => {
         const leagueApi = 'https://api-football-standings.azharimm.site/leagues'
-        const playersApi = 'https://soccer.sportmonks.com/api/v2.0/players/search/neymar?api_token=Xr0A62YZGlP3S4msTJwT1f9a21xznKhPwLw0qQ4nQ8vq0cFu1uSGb9gr2wgo'
-        const standingsApi = `https://api-football-standings.azharimm.site/leagues/${defaultLeague}/standings?season=${defaultYear}`
+        const playersApi = `https://soccer.sportmonks.com/api/v2.0/players/search/${usr}?api_token=Xr0A62YZGlP3S4msTJwT1f9a21xznKhPwLw0qQ4nQ8vq0cFu1uSGb9gr2wgo`
+        const standingsApi = `https://api-football-standings.azharimm.site/leagues/${defaultLeagues}/standings?season=${defaultYears}`
         const getLeagues = axios.get(leagueApi)
         const getPlayers = axios.get(playersApi)
         const getStandings = axios.get(standingsApi)
@@ -55,37 +72,29 @@ function Home() {
         )
     }
 
-
-
-
     useEffect(() => {
         fectchData()
     }, [])
 
 
-
-
-
+    // console.log(usr);
 
     return (
-            <div className="main-container">
-                <div className='tabs'>
-                    <div className='leagesTab' onClick={() => setActive(true)}>
-                        <h2 style={{ color: active ? "red" : null }}>Leages</h2>
-                    </div>
-                    <div className='standingsTab' onClick={() => setActive(false)}>
-                        <h2 style={{ color: !active ? "red" : null }}>Standings</h2>
-                    </div>
+        <div className="main-container">
+            <div className='tabs'>
+                <div className='leagesTab' onClick={() => setActive(true)}>
+                    <h2 style={{ color: active ? "red" : null }}>Leages</h2>
                 </div>
-                
-                {active ? <Leagues leagues={dataLeagues} /> : <Standings standing={standings} year={defaultYear}
-                    league={defaultLeague} />}
+                <div className='standingsTab' onClick={() => setActive(false)}>
+                    <h2 style={{ color: !active ? "red" : null }}>Standings</h2>
+                </div>
             </div>
+            {active ? <Leagues leagues={dataLeagues} /> : <Standings/>}
+        </div>
     )
 }
 
 export default Home;
-
 
 
 
