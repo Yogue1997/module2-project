@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Leagues from './Leagues'
 import Standings from './Standings';
-
+ 
 
 
 function Home() {
