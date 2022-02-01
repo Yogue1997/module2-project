@@ -127,4 +127,18 @@ select {
     margin: 22px 0px;
 }
 
+#playerDiv{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+#playerInput{
+    margin: 20px;
+    display:flex;
+    justify-content: center;
+}
 

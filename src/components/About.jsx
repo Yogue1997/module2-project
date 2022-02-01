@@ -6,7 +6,7 @@ function About () {
 
     return(
         <div>
-            <h6 id="test">kk</h6>
+            <h6 id="test">Just displaying all the </h6>
         </div>
     )
 }
