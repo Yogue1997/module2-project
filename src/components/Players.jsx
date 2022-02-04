@@ -18,7 +18,7 @@ function Players(props) {
 
 
     const fetchPlayer = async () => {
-        const {data} = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${user}?api_token=Xr0A62YZGlP3S4msTJwT1f9a21xznKhPwLw0qQ4nQ8vq0cFu1uSGb9gr2wgo`)
+        const { data } = await axios.get(`https://soccer.sportmonks.com/api/v2.0/players/search/${user}?api_token=Xr0A62YZGlP3S4msTJwT1f9a21xznKhPwLw0qQ4nQ8vq0cFu1uSGb9gr2wgo`)
         setData(data.data)
     }
     console.log(data);
@@ -42,18 +42,23 @@ function Players(props) {
                 <input type="text" id="input" onChange={getValue} />
                 <button onClick={fetchPlayer}>search</button>
             </div>
-            <div >
+            <div id="playerDiv">
                 {data.map((data, index) => (
-                    <h1 key={index} id="playerDiv">
-                        <span>
-                            <img src={data.image_path} alt="#"
-                                style={{ width: "40px" }} />
-                        </span>
-                        {data.fullname}
-                        <div>
-                            <p> Birth date: {data.birthdate}</p>
-                        </div>
-                    </h1>
+                    // <h1 key={index} id="playerCard">
+                    //     <span>
+                    //         <img src={data.image_path} alt="#"
+                    //             style={{ width: "40px" }} />
+                    //     </span>
+                    //     {data.fullname} 
+                    //     <div>
+                    //         <p> Birth date: {data.birthdate}</p>
+                    //     </div>
+                    // </h1>
+                    <div className="playerCard">
+                        <img src={data.image_path} alt="" />
+                        <h2>{data.fullname}</h2>
+                        <h3>Birth date: {data.birthdate}</h3>
+                    </div>
                 ))}
             </div>
         </div>

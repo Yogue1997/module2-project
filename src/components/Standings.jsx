@@ -74,19 +74,41 @@ function Standings(props) {
                     <option value="2021">2021</option>
                 </select>
             </div>
-            <div className="stadingRes">
+            <table className="stadingRes">
+                <tr>
+                    <th>Rank </th>
+                    <th>Team </th>
+                    <th>Points </th>
+                    <th>Games Played</th>
+                    <th>Goals For </th>
+                    <th>Goals Against </th>
+                    <th>Wins </th>
+                    <th>Draws </th>
+                    <th>Loses </th>
+                </tr>
                 {data.map((data, index) => (
-                    <div key={data.team.id} className="standingsInfDiv">
-                        <h1>
-                            <span>
-                                {`${index + 1}.`}<img src={data.team.logos[0].href} alt="#" 
-                                style={{width: "30px"}} />
-                            </span>
-                            {data.team.shortDisplayName}
-                        </h1>
-                    </div>
+                    // <div key={data.team.id} className="standingsInfDiv">
+                    //     <h1>
+                    //         <span>
+                    //             {`${index + 1}.`}<img src={data.team.logos[0].href} alt="#" 
+                    //             style={{width: "30px"}} />
+                    //         </span>
+                    //         {data.team.shortDisplayName}
+                    //     </h1>
+                    // </div>
+                    <tr className="team-data">
+                        <td className="wdl">{`${index + 1}`}</td>
+                        <td className="logo-name"><img src={data.team.logos[0].href} alt="#" style={{width: "20px"}} /> {data.team.shortDisplayName}</td>
+                        <td className="wdl">{data.stats[6].value}</td>
+                        <td className="wdl">{data.stats[3].value}</td>
+                        <td className="wdl">{data.stats[4].value}</td>
+                        <td className="wdl">{data.stats[5].value}</td>
+                        <td className="wdl">{data.stats[0].value}</td>
+                        <td className="wdl">{data.stats[2].value}</td>
+                        <td className="wdl">{data.stats[1].value}</td>
+                    </tr>
                 ))}
-            </div>
+            </table>
         </div>
     )
 }
