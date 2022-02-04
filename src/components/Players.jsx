@@ -57,7 +57,10 @@ function Players(props) {
                     <div className="playerCard">
                         <img src={data.image_path} alt="" />
                         <h2>{data.fullname}</h2>
+                        {/* <p>Common Name: {data.common_name}</p> */}
                         <h3>Birth date: {data.birthdate}</h3>
+                        <h3>Nationality: {data.nationality}</h3>
+                        <h3>Birthcountry: {data.birthcountry}</h3>
                     </div>
                 ))}
             </div>
