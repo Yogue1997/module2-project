@@ -39,7 +39,7 @@ function Players(props) {
     return (
         <div >
             <div id="playerInput">
-                <input type="text" id="input" onChange={getValue} />
+                <input type="text" id="input" onChange={getValue} placeholder="type a player name..."/>
                 <button onClick={fetchPlayer}>search</button>
             </div>
             <div id="playerDiv">
