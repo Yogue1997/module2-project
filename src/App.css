@@ -156,11 +156,12 @@ select {
 
 
 
-#playerInput{
+#playerinput{
     /* margin: 20px; */
     display:flex;
     justify-content: center;
-    
+    align-items: center;
+    padding: 50px;
 }
 
 
