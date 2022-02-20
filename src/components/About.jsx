@@ -1,10 +1,10 @@
 
 
-function About () {
+function About() {
 
 
 
-    return(
+    return (
         <div id="aboutDiv">
             <h2 id="about">About</h2>
             <p id="aboutP">
@@ -14,10 +14,10 @@ function About () {
                 but I'll work on it after the bootcamp */}
                 This project was created using React, a Football API and the Sportmonks API using axios  to call
                 the APIs. I learned how to work with React Hooks, such as useEffect and useState and more ...
-                It's not Yet responsive because at the moment I am also learning java but once done I will 
-                have to work on the css part to make it responsive
+                It's not Yet responsive because at the moment I am also learning java but once done I will
+                have to work on the css part to make it responsive.
             </p>
-            
+
         </div>
     )
 }
