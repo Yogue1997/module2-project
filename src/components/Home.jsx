@@ -84,13 +84,13 @@ function Home() {
         <div className="main-container">
             <div className='tabs'>
                 <div className='leagesTab' onClick={() => setActive(true)}>
-                    <h2 style={{ color: active ? "red" : null }}>Leagues</h2>
+                    <h2 style={{ color: active ? "red" : null }}>Standings</h2>
                 </div>
                 <div className='standingsTab' onClick={() => setActive(false)}>
-                    <h2 style={{ color: !active ? "red" : null }}>Standings</h2>
+                    <h2 style={{ color: !active ? "red" : null }}>Leagues</h2>
                 </div>
             </div>
-            {active ? <Leagues leagues={dataLeagues} /> : <Standings/>}
+            {active ? <Standings/> : <Leagues leagues={dataLeagues} />  }
         </div>
     )
 }

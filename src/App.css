@@ -157,9 +157,10 @@ select {
 
 
 #playerInput{
-    margin: 20px;
+    /* margin: 20px; */
     display:flex;
     justify-content: center;
+    
 }
 
 
@@ -207,6 +208,17 @@ table{
 .wdl{
     width: 8%;
 }
+
+
+#mainPlayers{
+    min-height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1618073193718-23a66109f4e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, );
+}
+
 
 
 
