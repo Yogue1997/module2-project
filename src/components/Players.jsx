@@ -38,7 +38,11 @@ function Players(props) {
 
     return (
         <div id="mainPlayers">
-           
+            <div id="playerinput">
+                <input type="text" id="input" onChange={getValue}
+                    placeholder="type a soccer player name..." size={50} />
+                <button onClick={fetchPlayer} >search</button>
+            </div>
             <div id="playerDiv">
                 {data.map((data, index) => (
                     // <h1 key={index} id="playerCard">
