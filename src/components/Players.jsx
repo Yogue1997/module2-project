@@ -40,7 +40,7 @@ function Players(props) {
         <div id="mainPlayers">
             <div id="playerinput">
                 <input type="text" id="input" onChange={getValue}
-                    placeholder="type a soccer player name..." size={50} />
+                    placeholder="type a soccer player name... ex: 'Youssouf'" size={50} />
                 <button onClick={fetchPlayer} >search</button>
             </div>
             <div id="playerDiv">
@@ -55,6 +55,8 @@ function Players(props) {
                     //         <p> Birth date: {data.birthdate}</p>
                     //     </div>
                     // </h1>
+
+                    
                     <div className="playerCard">
                         <img src={data.image_path} alt="" />
                         <h2>{data.fullname}</h2>
